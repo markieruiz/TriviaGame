@@ -1,0 +1,18 @@
+   
+.row {
+    text-align: center;
+    display: inline;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 32px;
+}
+
+
+.background { 
+    background-image: url("../images/Screen\ Shot\ 2018-10-28\ at\ 2.49.45\ PM.png");
+    background-size: 100%;
+    height: 145%;  
+    /* background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover; */
+}
+
