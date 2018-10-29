@@ -1,8 +1,4 @@
 
-var timer = 10;
-var win = 0;
-var losses = 0;
-
 var questions = [
 	{question: "here is question1 and this place holder?", 
   multiChoice: ["a.", "b.", "c.", "d."],
@@ -31,30 +27,41 @@ var questions = [
 	{question: "here is question7 and this place holder?", 
   multiChoice: ["a.", "b.", "c.", "d."],
 	answer: "b. show correct answer7"}];
-	
-console.log(questions[1].question)
-$(".question").text(questions[1].question); 
-$(".multiChoiceA").html(questions[1].multiChoice[0]);
-$(".multiChoiceB").html(questions[1].multiChoice[1]);
-$(".multiChoiceC").html(questions[1].multiChoice[2]);
-$(".multiChoiceD").html(questions[1].multiChoice[3]);
 
+var timer = 5;
 
 
 function startGame() {
-	for(var i = 0; i < questions.length; i++) {
-		$(".question").text(questions[i].question); 
-		$(".multiChoiceA").html("multiChoice[i]");
-		$(".multiChoiceA").html("multiChoice[i]");
-		$(".multiChoiceA").html("multiChoice[i]");
-		$(".multiChoiceA").html("multiChoice[i]");
-	}
+	intervalId = setInterval(count, 1000);
+			for(var i = 0; i < questions.length; i++) {
+				$(".question").text(questions[i].question); 
+				$(".multiChoiceA").html(questions[i].multiChoice[0]);
+				$(".multiChoiceB").html(questions[i].multiChoice[1]);
+				$(".multiChoiceC").html(questions[i].multiChoice[2]);
+				$(".multiChoiceD").html(questions[i].multiChoice[3]);
+				
+				$(".choice div").on("click", function () {
+					var userClick = $(".choice div").index(this);
+					console.log(userClick);
+					})
+
+				}
+		}
+	
+
+	function count() {
+		if(timer === 0) {
+			clearInterval(intervalId);
+			alert("you are out of time. Answer was: ")
+			}
+			else {
+			timer -- ;
+			$(".timer").text("Time Remaining: " + timer + " Seconds");  
+			}
+		}
 
 
-
-
-}
-
-
-//$(".question").text([question]);
+$("#start").on("click", function() 
+{startGame();
+});
 
