@@ -1,48 +1,5 @@
 # TriviaGame
 
--->Initial Notes
-
-Option Two: Advanced Assignment (Timed Questions)
-Advanced
-
-//psuedo code
-Array of questions
-Display first Question
-Display possible answers
-set times for 10? seconds
-
-If player clicks the correct answer,
-show a winning picture and 
-add to winning score
-play theme song
-
-if the player selects a losing answer
-display correct answer
-show a losing picture
-add to losing score
-play a losing sound
-wait a couple of seconds 
-go to next question
-
-if the timer runs out
-display correct answer
-show a time out picture
-add to losing score
-wait a couple of seconds
-
-Display next question until all questions have been looped through
-
-when all questions have been looped through
-display a final  page with the score
-wait a couple of seconds
-reset the game
-
-
-add favicon to the tab
-
-
-
-
 You'll create a trivia game that shows only one question until the player answers it or their time runs out.
 
 If the player selects the correct answer, show a screen congratulating them for choosing the right option. After a few seconds, display the next question -- do this without user input.
@@ -77,7 +34,3 @@ Remember to deploy your assignment to Github Pages.
 
 Good Luck!
 
- <!-- //https://pixel.nymag.com/imgs/daily/vulture/2017/03/02/02-golden-girls.w700.h700.jpg -->
-    <!-- http://tvland.mtvnimages.com/uri/mgid:file:gsp:entertainment-assets:/tvl/images/shows/the_golden_girls/site/golden_girls_Series_Main_Portrait_768x316.png?quality=0.85&width=412&height=316&crop=true
-     http://tvland.mtvnimages.com/uri/mgid:file:gsp:entertainment-assets:/tvl/images/shows/the_golden_girls/site/golden_girls_Series_Main_Portrait_768x316.png?quality=0.85&width=412&height=316&crop=true     -->
-     <!-- "https://vice-images.vice.com/images/content-images/2015/09/16/meet-the-bioethicist-who-learned-everything-about-her-field-from-the-golden-girls-916-body-image-1442418453.jpg?"); -->
