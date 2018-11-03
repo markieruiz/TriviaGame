@@ -41,17 +41,20 @@ $(document).ready(function (event) {
 	var answers = [q0.answer, q1.answer, q2.answer, q3.answer, q4.answer]
 
 	function winPage() {
-		// $(".screen").text("You win!");
-		$(".screen").prepend('<img id="win" src="assets/images/Screen\ Shot\ 2018-11-02\ at\ 9.12.59\ PM.png"/>')
-
+		
+		$(".screen").prepend('<img id="win" src="assets/images/Screen Shot 2018-10-28 at 2.42.56 PM.png"/>')
+		$(".timer").text("");
 	}
 
 	function losePage() {
-		$(".screen").text("You lose!");
+		$(".timer").text("");
+		$(".screen").prepend('<img id="lose" src="assets/images/Screen Shot 2018-11-02 at 9.13.38 PM.png"/>')
 	}
 
 	function endPage() {
-		$(".screen").text("The End!");
+		$(".timer").text("");
+		$(".screen").prepend('<img id="lose" src="assets/images/Screen Shot 2018-10-28 at 2.49.45 PM.png"The END!/>')
+
 	}
 
 	var replaceOptions = "<div class='row'>"

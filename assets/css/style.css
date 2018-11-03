@@ -39,3 +39,8 @@
     background-color: grey;
     border: 2px, solid navy;
 }
+
+.screen #win{
+    width: 200px;
+    height: 200px;
+}
