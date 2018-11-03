@@ -41,7 +41,9 @@ $(document).ready(function (event) {
 	var answers = [q0.answer, q1.answer, q2.answer, q3.answer, q4.answer]
 
 	function winPage() {
-		$(".screen").text("You win!");
+		// $(".screen").text("You win!");
+		$(".screen").prepend('<img id="win" src="../images/Screen\ Shot\ 2018-11-02\ at\ 9.12.59\ PM.png"/>')
+
 	}
 
 	function losePage() {
@@ -53,12 +55,12 @@ $(document).ready(function (event) {
 	}
 
 	var replaceOptions = "<div class='row'>"
-	"<p>Answer Choices</p>"
-	"</div>"
-	"<div class='row choice1'></div>"
-	"<div class='row choice2'></div>"
-	"<div class='row choice3'></div>"
-	"<div class='row choice4'></div>"
+		"<p>Answer Choices</p>"
+		"</div>"
+		"<div class='row choice1'></div>"
+		"<div class='row choice2'></div>"
+		"<div class='row choice3'></div>"
+		"<div class='row choice4'></div>"
 
 	function countdown() {
 		if (timeLeft === 0) {
