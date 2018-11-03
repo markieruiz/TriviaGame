@@ -1,117 +1,161 @@
 $(document).ready(function (event) {
 
-var questions = [
-	{question: "here is question1 and this place holder?", 
-  multiChoice: ["a.", "b.", "c.", "d."],
-  answer: 0},
+	var q0 = { 
+		question: "Dorothy has two siblings. What is her brothers name?",
+		answerChoices: ["Stan", "Salvador", "Lars", "Phil"],
+		answer: "Phil",
+
+	}
+	var q1 = { 
+		question: "How many seasons did the Golden Girls span?",
+		answerChoices: ["8", "10", "7", "12"],
+		answer: "7",
+
+	}
+	var q2 = { 
+		question: "Who has a blind sibling?",
+		answerChoices: ["Sophia", "Rose", "Blanche", "Dorothy"],
+		answer: "Rose",
+
+	}
+	var q3 = { 
+		question: "How many years were Dorothy and Stan married?",
+		answerChoices: ["38", "32", "43", "25"],
+		answer: "38",
+
+	}
+	var q4 = { 
+		question: "What are Blanche's initials?",
+		answerChoices: ["B.A.D.", "B.E.D.", "B.L.R.", "B.H.R."],
+		answer: "B.E.D.",
+	}
+
+	var timeLeft = 10; 
+	var losses = 0; 
+	var wins = 0; 
+	var number = 0; 
+	var myMusic = ("thegoldengirlsshort.wav");
+
+	var questions = [q0.question, q1.question, q2.question, q3.question, q4.question]; 
+	var answerOptions = [q0.answerChoices, q1.answerChoices, q2.answerChoices, q3.answerChoices, q4.answerChoices]; 
+	var answers = [q0.answer, q1.answer, q2.answer, q3.answer, q4.answer]
 	
-	{question: "here is question2 and this place holder?", 
-  multiChoice: ["a.choiceA", "b.choiceB", "c.ChooseMe", "d.I am wrong"],
-	answer: 0},
-	
-	{question: "here is question3 and this place holder?", 
-  multiChoice: ["a.choiceA", "b.choiceB", "c.ChooseMe", "d.I am wrong"],
-  answer: 1},
+	function winPage () {
+		$(".screen").text("You win!"); 
+	}
 
-	{question: "here is question4 and this place holder?", 
-  multiChoice: ["a.choiceA", "b.choiceB", "c.ChooseMe", "d.I am wrong"],
-	answer: 2},
-	
-	{question: "here is question5 and this place holder?", 
-  multiChoice: ["a.choiceA", "b.choiceB", "c.ChooseMe", "d.I am wrong"],
-  answer: 3},
+	function losePage () {
+		$(".screen").text("You lose!"); 
+	}
 
-	{question: "here is question6 and this place holder?", 
-  multiChoice: ["a.choiceA", "b.choiceB", "c.ChooseMe", "d.I am wrong"],
-	answer: 4},
-	
-	{question: "here is question7 and this place holder?", 
-  multiChoice: ["a.choiceA", "b.choiceB", "c.ChooseMe", "d.I am wrong"],
-	answer: 1}];
+	function endPage () {
+		$(".screen").text("The End!"); 
+	}
 
-var i = 0;
-var wins = 0;
-var losses = 0;
+	var replaceOptions = "<div class='row'>" 
+							"<p>Answer Choices</p>" 
+						"</div>" 
+						"<div class='row choice1'></div>" 
+						"<div class='row choice2'></div>"  
+						"<div class='row choice3'></div>" 
+						"<div class='row choice4'></div>"
 
-function startGame() {
-		
-	if (i < questions.length) {
-		timer = 15;
-		intervalId = setInterval(count, 1000);
-		$(".timer").text("Time Remaining: " + timer + " Seconds");  
-		
-
-		$(".question").text(questions[i].question); 
-		$(".multiChoiceA").html(questions[i].multiChoice[0]);
-		$(".multiChoiceB").html(questions[i].multiChoice[1]);
-		$(".multiChoiceC").html(questions[i].multiChoice[2]);
-		$(".multiChoiceD").html(questions[i].multiChoice[3]);
-				
-		$(".choice div").on("click", function () {
-			var userClick = $(".choice div").index(this);
-
-				if(userClick === questions[i].answer) {
-					//alert("you won show the screen here")
-					wins++
-					clearInterval(intervalId);
-					i++;
-					userClick="";
-					setTimeout(startGame, 5000); 
-					
-				}
-				else {
-					//alert("you lost show the screen here")
-					losses++
-					clearInterval(intervalId);
-					i++;
-					userClick="";
-					setTimeout(startGame, 5000); 
-				}
-
-			console.log(userClick);
-			console.log("wins" + wins);
-			console.log("losses" + losses);
-			console.log("this one:" + i);
-
-			});
-
-		}
-	else {
-		if (i = questions.length) {
-			wins = 0 ;
-			losses = 0;
-			i = 0;
+	function countdown () { 
+		if (timeLeft === 0) {
 			clearInterval(intervalId); 
-			setTimeout(startGame, 5000);
-
-		}
-	}
-	
-	}
-
-	function count() {
-		if (timer === 0) {
-			clearInterval(intervalId);
 			$(".timer").text("Time Remaining: " + 0 + " Seconds"); 
-			userClick="";
-			losses++;
-			i++;
-			console.log(wins);
-			console.log(losses);
-			console.log(i);
-			setTimeout(startGame, 5000); 
-			console.log("you are out of time. Answer was: ");
-			}
-			else {
-			timer -- ;
-			$(".timer").text("Time Remaining: " + timer + " Seconds");  
-			
-			}
+			$(".results").text("Times Up! The correct answer is: " + answers[number]); 
+			losePage(); 
+			losses ++; 
+			number ++ ;
+			setTimeout(game, 3000); 
 		}
+		else {
+			timeLeft -- ;
+			$(".timer").text("Time Remaining: " + timeLeft + " Seconds");  
+
+		} 
+	}
+
+	function game () {
+		if (number < questions.length ) {
+			timeLeft = 10; 
+			$(".results").text(""); 
+			$(".screen").html(replaceOptions); 
+			$(".timer").text("Time Remaining: " + timeLeft + " Seconds");
+			intervalId = setInterval (countdown, 1000);
+			$(".question").text(questions[number]); 
+			$(".choice1").html("<button class='buttons button1' value=" + answerOptions[number][0] + ">" + answerOptions[number][0] + "</button>");
+			$(".choice2").html("<button class='buttons button2' value=" + answerOptions[number][1] + ">" + answerOptions[number][1] + "</button>"); 
+			$(".choice3").html("<button class='buttons button3' value=" + answerOptions[number][2] + ">" + answerOptions[number][2] + "</button>");
+			$(".choice4").html("<button class='buttons button4' value=" + answerOptions[number][3] + ">" + answerOptions[number][3] + "</button>");
+			
+			$(".buttons").on("click", function () {
+				$.playSound("http://www.noiseaddicts.com/samples_1w72b820/3740.mp3");
+					var userClick = $(this).attr("value"); 
+
+				if (userClick === answers[number]) {
+					$(".results").text("CORRECT! The answer is: " + answers[number]); 
+					wins ++; 
+					clearInterval(intervalId); 
+					winPage(); 
+					number ++ ;
+					setTimeout(game, 3000);
+
+				}
+				else{
+					$(".results").text("Wrong! The correct answer is: " + answers[number]);
+					losses ++; 
+					clearInterval(intervalId); 
+					losePage(); 
+					number ++ ;
+					setTimeout(game, 3000); 
+
+				}   
+			}); 
+
+		}
+		else {
+			$.playSound("thegoldengirlsshort.wav");
+			clearInterval(intervalId); 
+			endPage(); 
+			$(".results").text("Game Over! Press Restart to Play Again!"); 
+			$(".question").text("");
+			$(".correct").text("Wins: " + wins); 
+			$(".incorrect").text("Losses: " + losses); 
+			$(".buttons").remove();
+			$(".timer").text(""); 
+			
+			$(".restart").show(); 
 
 
-$("#start").on("click", function() 
-{startGame();
-});
+	}
+}
 
-});
+function reset () {
+	$(".restart").hide(); 
+	losses = 0; 
+	$(".incorrect").text(""); 
+	wins = 0; 
+	$(".correct").text(""); 
+	number = 0; 
+	game(); 
+}
+
+$(".restart").hide(); 
+
+$(".start").on("click", function () {
+
+	$(this).hide(); 
+
+	game(); 
+	
+}); 
+
+$(".restart").on("click", function () {
+	reset(); 
+	
+	
+}); 
+
+}); 
