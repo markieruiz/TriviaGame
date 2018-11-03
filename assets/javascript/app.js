@@ -52,8 +52,9 @@ $(document).ready(function (event) {
 	}
 
 	function endPage() {
+		$(".screen").empty();
 		$(".timer").text("");
-		$(".screen").prepend('<img id="lose" src="assets/images/Screen Shot 2018-10-28 at 2.49.45 PM.png"The END!/>')
+		$(".screen").prepend('<img id="end" src="assets/images/Screen Shot 2018-10-28 at 2.49.45 PM.png"The END!/>')
 
 	}
 
