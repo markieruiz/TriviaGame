@@ -42,7 +42,7 @@ $(document).ready(function (event) {
 
 	function winPage() {
 		// $(".screen").text("You win!");
-		$(".screen").prepend('<img id="win" src="../images/Screen\ Shot\ 2018-11-02\ at\ 9.12.59\ PM.png"/>')
+		$(".screen").prepend('<img id="win" src="assets/images/Screen\ Shot\ 2018-11-02\ at\ 9.12.59\ PM.png"/>')
 
 	}
 
