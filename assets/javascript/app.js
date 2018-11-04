@@ -55,7 +55,7 @@ $(document).ready(function (event) {
 		$(".screen").empty();
 		$(".timer").text("");
 		$(".screen").prepend('<img id="end" src="assets/images/Screen Shot 2018-10-28 at 2.49.45 PM.png"The END!/>')
-
+		$.stopSound("Jeopardy-theme-song.mp3");
 	}
 
 	var replaceOptions = "<div class='row'>"
@@ -122,6 +122,7 @@ $(document).ready(function (event) {
 
 		}
 		else {
+			$.stopSound("Jeopardy-theme-song.mp3");
 			$.playSound("thegoldengirlsshort.wav");
 			clearInterval(intervalId);
 			endPage();
