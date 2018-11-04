@@ -149,10 +149,13 @@ $(document).ready(function (event) {
 
 	$(".start").on("click", function () {
 		$(this).hide();
+		$.playSound("Jeopardy-theme-song.mp3");
 		game();
 	});
 
 	$(".restart").on("click", function () {
+		$.stopSound("thegoldengirlsshort.wav");
+		$.playSound("Jeopardy-theme-song.mp3");
 		reset();
 	});
 
