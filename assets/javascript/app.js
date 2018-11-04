@@ -52,11 +52,11 @@ $(document).ready(function (event) {
 	}
 
 	function endPage() {
+		$.playSound("thegoldengirlsshort.wav");
 		$(".screen").empty();
 		$(".timer").text("");
-		$(".screen").prepend('<img id="end" src="assets/images/Screen Shot 2018-10-28 at 2.49.45 PM.png"The END!/>')
-		$.stopSound("Jeopardy-theme-song.mp3");
-	}
+		$(".screen").prepend('<img id="end" src="assets/images/Screen Shot 2018-10-28 at 2.49.45 PM.png"The END!/>');
+			}
 
 	var replaceOptions = "<div class='row'>"
 		"<p>Answer Choices</p>"
@@ -122,8 +122,8 @@ $(document).ready(function (event) {
 
 		}
 		else {
+			
 			$.stopSound("Jeopardy-theme-song.mp3");
-			$.playSound("thegoldengirlsshort.wav");
 			clearInterval(intervalId);
 			endPage();
 			$(".results").text("Game Over! Press Restart to Play Again!");
